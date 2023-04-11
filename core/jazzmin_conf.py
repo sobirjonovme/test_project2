@@ -23,7 +23,7 @@ JAZZMIN_SETTINGS = {
     "copyright": "Default copyright",
     # List of model admins to search from the search bar, search bar omitted if excluded.
     # If you want to use a single search field you don't need to use a list, you can use a simple string
-    "search_model": ["auth.User", ],
+    "search_model": ["users.CustomUser", ],
     # Field name on user model that contains avatar ImageField/URLField/Char_field or a callable that receives the user
     "user_avatar": None,
     ############
@@ -34,7 +34,7 @@ JAZZMIN_SETTINGS = {
         # Url that gets reversed (Permissions can be added)
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {"model": "users.CustomUser"},
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "users"},
     ],
@@ -44,7 +44,7 @@ JAZZMIN_SETTINGS = {
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
     "usermenu_links": [
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"},
+        {"model": "users.CustomUser"},
     ],
     #############
     # Side Menu #
