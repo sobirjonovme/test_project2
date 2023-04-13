@@ -19,13 +19,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
-# from .schema import swagger_urlpatterns
+from .schema import swagger_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.urls')),  # entry point to other project app urls
 
 ]
+
+urlpatterns += swagger_urlpatterns
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

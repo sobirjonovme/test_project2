@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+from datetime import timedelta
+
 from environs import Env
 from pathlib import Path
 
@@ -53,13 +55,11 @@ CUSTOM_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # "rest_framework",
+    "rest_framework",
     # "django_filters",
-    # "drf_yasg",  # swagger
+    "drf_yasg",  # swagger
     # "corsheaders",  # cors headers
-    # "rest_framework_simplejwt",  # JWT Authentication
-    # "ckeditor",  # CKEditor
-    # "ckeditor_uploader",  # CKEditor
+    "rest_framework_simplejwt",  # JWT Authentication
     # "sorl.thumbnail",  # for image compressing
 ]
 
@@ -169,12 +169,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom Auth User model
 AUTH_USER_MODEL = "users.CustomUser"
 
-# #############################################################################################################
-# # ##############################   Django Rest Framework Settings   #########################################
-# #############################################################################################################
-# REST_FRAMEWORK = {
-#     "DEFAULT_AUTHENTICATION_CLASSES": (
-#         "rest_framework_simplejwt.authentication.JWTAuthentication",
-#         "rest_framework.authentication.BasicAuthentication",  # for browser auth
-#     ),
-# }
+#############################################################################################################
+# ##############################   Django Rest Framework Settings   #########################################
+#############################################################################################################
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.BasicAuthentication",  # for browser auth
+    ),
+}
+
+# ##########################   Simple JWT Settings   #############################
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+}
