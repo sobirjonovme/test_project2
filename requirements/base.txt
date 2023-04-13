@@ -4,3 +4,4 @@ django-jazzmin==2.6.0
 djangorestframework==3.14.0
 drf-yasg==1.21.5
 djangorestframework_simplejwt==5.2.2
+psycopg2-binary==2.9.6
