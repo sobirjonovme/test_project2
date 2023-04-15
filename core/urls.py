@@ -23,6 +23,7 @@ from .schema import swagger_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),  # for browsable api
     path('', include('apps.urls')),  # entry point to other project app urls
 
 ]

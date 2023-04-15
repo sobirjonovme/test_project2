@@ -175,7 +175,8 @@ AUTH_USER_MODEL = "users.CustomUser"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-        "rest_framework.authentication.BasicAuthentication",  # for browser auth
+        "rest_framework.authentication.BasicAuthentication",  # for swagger auth
+        "rest_framework.authentication.SessionAuthentication",  # for browsable api auth
     ),
 }
 
