@@ -27,6 +27,9 @@ env = Env()
 # then Env.read_env will look for a .env file recurse upwards until a .env file is found
 env.read_env(os.path.join(BASE_DIR, ".env"), recurse=False)
 
+# Project Stage
+STAGE = env.str("STAGE", "develop")
+
 # Quick-start development settings - unsuitable for production.txt
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
