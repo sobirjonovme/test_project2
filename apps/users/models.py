@@ -1,6 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -12,7 +11,7 @@ class CustomUser(AbstractUser):
         refresh = RefreshToken.for_user(self)
 
         tokens = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
         }
         return tokens

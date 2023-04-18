@@ -14,12 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.contrib.auth.forms import AuthenticationForm
 from captcha import fields
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.auth.forms import AuthenticationForm
+from django.urls import include, path
 
 from .schema import swagger_urlpatterns
 
@@ -39,10 +39,9 @@ admin.site.login_template = "login.html"
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),  # for browsable api
-    path('', include('apps.urls')),  # entry point to other project app urls
-
+    path("admin/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls")),  # for browsable api
+    path("", include("apps.urls")),  # entry point to other project app urls
 ]
 
 urlpatterns += swagger_urlpatterns

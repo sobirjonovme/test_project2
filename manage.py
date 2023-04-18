@@ -15,7 +15,7 @@ def main():
     # Reading environment variables
     env = Env()
     env.read_env(os.path.join(base_dir, ".env"), recurse=False)
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', env.str("DJANGO_SETTINGS_MODULE"))
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", env.str("DJANGO_SETTINGS_MODULE"))
 
     try:
         from django.core.management import execute_from_command_line
@@ -28,5 +28,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
