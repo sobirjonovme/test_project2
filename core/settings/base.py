@@ -58,6 +58,7 @@ CUSTOM_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "captcha",
     "rest_framework",
     # "django_filters",
     "drf_yasg",  # swagger
@@ -83,7 +84,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -176,11 +177,20 @@ AUTH_USER_MODEL = "users.CustomUser"
 # ##############################   Django Rest Framework Settings   #########################################
 #############################################################################################################
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.BasicAuthentication",  # for swagger auth
         "rest_framework.authentication.SessionAuthentication",  # for browsable api auth
-    ),
+    ],
+
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "10/second",
+        "user": "10/second"
+    },
 }
 
 # ##########################   Simple JWT Settings   #############################
@@ -188,3 +198,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
+
+# ##########################   reCAPTCHA   #############################
+RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY")
+RECAPTCHA_PUBLIC_KEY = env.str("RECAPTCHA_PUBLIC_KEY")
