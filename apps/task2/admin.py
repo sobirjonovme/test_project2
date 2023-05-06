@@ -8,4 +8,3 @@ from apps.task2.models import Vacancy
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ["title", "salary", "salary_from", "salary_to", "is_active"]
     list_filter = ["is_active"]
-

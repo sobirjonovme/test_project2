@@ -63,7 +63,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "phonenumber_field",
-    # "django_filters",
+    "django_filters",
     "drf_yasg",  # swagger
     # "corsheaders",  # cors headers
     # "rest_framework_simplejwt",  # JWT Authentication
