@@ -56,6 +56,7 @@ CUSTOM_APPS = [
     "apps.common",
     "apps.users",
     "apps.task2",
+    "apps.task3",
 ]
 
 THIRD_PARTY_APPS = [
