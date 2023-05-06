@@ -4,15 +4,14 @@ from apps.users.models import CustomUser
 
 
 class CustomUserAdmin(admin.ModelAdmin):
-    search_fields = ("username", "first_name", "last_name")
-    list_display = ("id", "username", "first_name", "last_name")
+    search_fields = ("first_name", "last_name")
+    list_display = ("id", "first_name", "last_name")
     list_display_links = (
         "id",
-        "username",
     )
 
     fieldsets = (
-        ("Personal info", {"fields": ("id", "username", "first_name", "last_name")}),
+        ("Personal info", {"fields": ("id", "first_name", "last_name", "is_deleted")}),
         ("Contact info", {"fields": ("email",)}),
         ("Permissions", {"fields": ("is_staff", "is_superuser", "groups", "user_permissions")}),
         (

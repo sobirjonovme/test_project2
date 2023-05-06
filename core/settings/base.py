@@ -60,10 +60,11 @@ CUSTOM_APPS = [
 THIRD_PARTY_APPS = [
     "captcha",
     "rest_framework",
+    "phonenumber_field",
     # "django_filters",
     "drf_yasg",  # swagger
     # "corsheaders",  # cors headers
-    "rest_framework_simplejwt",  # JWT Authentication
+    # "rest_framework_simplejwt",  # JWT Authentication
     # "sorl.thumbnail",  # for image compressing
 ]
 
@@ -176,9 +177,9 @@ AUTH_USER_MODEL = "users.CustomUser"
 #############################################################################################################
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-        "rest_framework.authentication.BasicAuthentication",  # for swagger auth
-        "rest_framework.authentication.SessionAuthentication",  # for browsable api auth
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
@@ -187,11 +188,11 @@ REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_RATES": {"anon": "10/second", "user": "10/second"},
 }
 
-# ##########################   Simple JWT Settings   #############################
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
-}
+# # ##########################   Simple JWT Settings   #############################
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+#     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+# }
 
 # ##########################   reCAPTCHA   #############################
 RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY")
