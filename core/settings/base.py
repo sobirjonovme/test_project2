@@ -57,6 +57,7 @@ CUSTOM_APPS = [
     "apps.users",
     "apps.task2",
     "apps.task3",
+    "apps.task4",
 ]
 
 THIRD_PARTY_APPS = [
@@ -189,6 +190,17 @@ REST_FRAMEWORK = {
         "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {"anon": "10/second", "user": "10/second"},
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": env.str("REDIS_URL", "redis://localhost:6379/0"),
+        "TIMEOUT": 600,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
 }
 
 # # ##########################   Simple JWT Settings   #############################
