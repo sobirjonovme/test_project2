@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-from datetime import timedelta
+# from datetime import timedelta
 from pathlib import Path
 
 from environs import Env
@@ -55,11 +55,13 @@ DJANGO_APPS = [
 CUSTOM_APPS = [
     "apps.common",
     "apps.users",
+    "apps.task2",
 ]
 
 THIRD_PARTY_APPS = [
     "captcha",
     "rest_framework",
+    "rest_framework.authtoken",
     "phonenumber_field",
     # "django_filters",
     "drf_yasg",  # swagger

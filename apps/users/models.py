@@ -1,11 +1,9 @@
-from django.contrib.auth.models import AbstractUser
-from django.db import models
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.models import UserManager
-
-from rest_framework.authtoken.models import Token
-from phonenumber_field.modelfields import PhoneNumberField
 from django.apps import apps
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser, UserManager
+from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+from rest_framework.authtoken.models import Token
 
 
 class CustomUserManager(UserManager):
@@ -21,9 +19,7 @@ class CustomUserManager(UserManager):
         # Lookup the real model class from the global app registry so this
         # manager method can be used in migrations. This is fine because
         # managers are by definition working on the real model.
-        GlobalUserModel = apps.get_model(
-            self.model._meta.app_label, self.model._meta.object_name
-        )
+        GlobalUserModel = apps.get_model(self.model._meta.app_label, self.model._meta.object_name)  # noqa F401
 
         user = self.model(phone_number=phone_number, email=email, **extra_fields)
         user.password = make_password(password)
@@ -58,11 +54,9 @@ class CustomUser(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_tokens(self):
-        token = Token.objects.get_or_create(user=self)
+        token, created = Token.objects.get_or_create(user=self)
 
-        tokens = {
-            "token": token.key
-        }
+        tokens = {"token": token.key}
         return tokens
 
     def __str__(self):
