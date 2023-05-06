@@ -68,9 +68,7 @@ THIRD_PARTY_APPS = [
     "phonenumber_field",
     "django_filters",
     "drf_yasg",  # swagger
-    # "corsheaders",  # cors headers
-    # "rest_framework_simplejwt",  # JWT Authentication
-    # "sorl.thumbnail",  # for image compressing
+    "sorl.thumbnail",  # for image compressing
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
