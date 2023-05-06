@@ -12,6 +12,11 @@ class VacancyFilter(filters.FilterSet):
         fields = ["salary"]
 
     def filter_by_salary(self, queryset, name, value):
-        vacancies = queryset.filter(Q(salary__exact=value) | Q(Q(salary_from__lte=value) & Q(salary_to__gte=value)))
+        vacancies = queryset.filter(
+            Q(salary__exact=value) |
+            Q(
+                Q(salary_from__lte=value) & Q(salary_to__gte=value)
+            )
+        )
 
         return vacancies
